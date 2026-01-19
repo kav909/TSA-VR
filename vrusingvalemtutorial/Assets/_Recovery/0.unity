@@ -5689,7 +5689,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement.ContinuousMoveProvider
   m_Mediator: {fileID: 8070093485018400424}
   m_TransformationPriority: 0
-  m_MoveSpeed: 10000
+  m_MoveSpeed: 10
   m_InAirControlModifier: 0.5
   m_EnableStrafe: 1
   m_EnableFly: 0
