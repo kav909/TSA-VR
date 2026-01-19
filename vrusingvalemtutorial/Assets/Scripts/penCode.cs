@@ -18,8 +18,8 @@ public class penCode : MonoBehaviour
     [Header("XR")]
     public XRGrabInteractable grabInteractable;
 
-    public InputActionProperty rightTrigger;   // Value 0–1
-    public InputActionProperty leftTrigger;    // Value 0–1
+    public InputActionProperty rightTrigger;   
+    public InputActionProperty leftTrigger;    
 
     private LineRenderer currentDrawing;
     private int index;
@@ -35,7 +35,7 @@ public class penCode : MonoBehaviour
     {
         bool isGrabbed = grabInteractable.isSelected;
 
-        // Use interactorsSelecting to get the current selecting interactor
+        
         var selectingInteractor = (grabInteractable.interactorsSelecting != null && grabInteractable.interactorsSelecting.Count > 0)
             ? grabInteractable.interactorsSelecting[0] : null;
 
