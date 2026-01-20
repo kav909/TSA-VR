@@ -2935,7 +2935,19 @@ PrefabInstance:
       value: Trophy
       objectReference: {fileID: 0}
     - target: {fileID: 3729144099020766011, guid: 3f2245bee0a16594fa5461000f35ddc4, type: 3}
+      propertyPath: isScaling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729144099020766011, guid: 3f2245bee0a16594fa5461000f35ddc4, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729144099020766011, guid: 3f2245bee0a16594fa5461000f35ddc4, type: 3}
+      propertyPath: floatHeight
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3729144099020766011, guid: 3f2245bee0a16594fa5461000f35ddc4, type: 3}
+      propertyPath: useEasingForScaling
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
