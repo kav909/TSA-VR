@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class penCode : MonoBehaviour
 {
@@ -10,101 +8,102 @@ public class penCode : MonoBehaviour
     public Transform tip;
     public Material drawingMaterial;
     public Material tipMaterial;
-    [Range(0.01f, 0.1f)]
     public float penWidth = 0.01f;
-
     public Color[] penColors;
 
     [Header("XR")]
-    public XRGrabInteractable grabInteractable;
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
+    public InputActionProperty rightTrigger;
+    public InputActionProperty leftTrigger;
 
-    public InputActionProperty rightTrigger;   
-    public InputActionProperty leftTrigger;    
-
-    private LineRenderer currentDrawing;
+    private LineRenderer currentLine;
     private int index;
-    private int currentColorIndex;
+    private int colorIndex;
+
+    private UnityEngine.XR.Interaction.Toolkit.Interactors.IXRSelectInteractor grabbingInteractor;
 
     void Start()
     {
-        currentColorIndex = 0;
-        tipMaterial.color = penColors[currentColorIndex];
+        colorIndex = 0;
+        tipMaterial.color = penColors[colorIndex];
+
+        rightTrigger.action.Enable();
+        leftTrigger.action.Enable();
+
+        grabInteractable.selectEntered.AddListener(OnGrab);
+        grabInteractable.selectExited.AddListener(OnRelease);
+    }
+
+    private void OnGrab(SelectEnterEventArgs args)
+    {
+        grabbingInteractor = args.interactorObject;
+    }
+
+    private void OnRelease(SelectExitEventArgs args)
+    {
+        grabbingInteractor = null;
+        currentLine = null;
     }
 
     void Update()
     {
-        bool isGrabbed = grabInteractable.isSelected;
+        if (grabbingInteractor == null)
+            return;
 
-        
-        var selectingInteractor = (grabInteractable.interactorsSelecting != null && grabInteractable.interactorsSelecting.Count > 0)
-            ? grabInteractable.interactorsSelecting[0] : null;
+        string name = grabbingInteractor.transform.name.ToLower();
 
-        bool isRightHandDrawing =
-            isGrabbed &&
-            selectingInteractor != null &&
-            selectingInteractor.transform.name.Contains("Right") &&
+        bool isRightHand =
+            name.Contains("right") &&
             rightTrigger.action.ReadValue<float>() > 0.1f;
 
-        bool isLeftHandDrawing =
-            isGrabbed &&
-            selectingInteractor != null &&
-            selectingInteractor.transform.name.Contains("Left") &&
+        bool isLeftHand =
+            name.Contains("left") &&
             leftTrigger.action.ReadValue<float>() > 0.1f;
 
-        if (isRightHandDrawing || isLeftHandDrawing)
+        if (isRightHand || isLeftHand)
         {
             Draw();
         }
-        else if (currentDrawing != null)
+        else
         {
-            currentDrawing = null;
+            currentLine = null;
         }
 
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
             SwitchColor();
-        }
     }
 
     private void Draw()
     {
-        if (currentDrawing == null)
+        if (currentLine == null)
         {
             index = 0;
 
             GameObject lineObj = new GameObject("DrawingLine");
-            currentDrawing = lineObj.AddComponent<LineRenderer>();
+            currentLine = lineObj.AddComponent<LineRenderer>();
 
-            currentDrawing.material = drawingMaterial;
-            currentDrawing.startColor = currentDrawing.endColor = penColors[currentColorIndex];
-            currentDrawing.startWidth = currentDrawing.endWidth = penWidth;
-            currentDrawing.positionCount = 1;
-            currentDrawing.SetPosition(0, tip.position);
+            currentLine.material = drawingMaterial;
+            currentLine.startColor = currentLine.endColor = penColors[colorIndex];
+            currentLine.startWidth = currentLine.endWidth = penWidth;
+            currentLine.positionCount = 1;
+            currentLine.SetPosition(0, tip.position);
         }
         else
         {
-            Vector3 lastPos = currentDrawing.GetPosition(index);
+            Vector3 lastPos = currentLine.GetPosition(index);
 
             if (Vector3.Distance(lastPos, tip.position) > 0.014f)
             {
                 index++;
-                currentDrawing.positionCount = index + 1;
-                currentDrawing.SetPosition(index, tip.position);
+                currentLine.positionCount = index + 1;
+                currentLine.SetPosition(index, tip.position);
             }
         }
     }
 
     private void SwitchColor()
     {
-        if (currentColorIndex == penColors.Length - 1)
-        {
-            currentColorIndex = 0;
-        }
-        else
-        {
-            currentColorIndex++;
-        }
-
-        tipMaterial.color = penColors[currentColorIndex];
+        colorIndex = (colorIndex + 1) % penColors.Length;
+        tipMaterial.color = penColors[colorIndex];
     }
 }
