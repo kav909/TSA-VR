@@ -1020,20 +1020,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &280406032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI Left Interaction/Activate
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 0c0991c5-d329-4afc-8892-1076b440477c
 --- !u!1 &303464911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2286,40 +2272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0856d221adbe0e84192cd4e9f90efcb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::penCode
-  tip: {fileID: 303464912}
-  drawingMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  tipMaterial: {fileID: 2100000, guid: 709d2c80eb281e742879109122e50f66, type: 2}
-  penWidth: 0.01
-  penColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  grabInteractable: {fileID: 832395675}
-  rightTrigger:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Right Trigger
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: c3c34a46-5168-4897-9a31-d46b7430bc7b
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 1716483003}
-  leftTrigger:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Left Trigger
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 9ed5b4d5-c73d-4b6b-898c-f6971db13325
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 280406032}
 --- !u!54 &832395670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4243,20 +4195,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651492827}
   m_CullTransparentMesh: 1
---- !u!114 &1716483003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc1515ab76e54f068e2f2207940fab32, type: 3}
-  m_Name: XRI Right Interaction/Activate
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.InputActionReference
-  m_Asset: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  m_ActionId: 41976d89-60de-4deb-bff9-16b4af96b290
 --- !u!1001 &1743346490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5511,7 +5449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2018132486720632483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5707,11 +5645,11 @@ Transform:
   m_GameObject: {fileID: 6815074766210999463}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.15109, y: 0, z: -1.25771}
+  m_LocalPosition: {x: -0.67609, y: 1, z: -15.2577095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7092264600504466988}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3345838903272318881
 GameObject:
@@ -11671,7 +11609,6 @@ Transform:
   m_Children:
   - {fileID: 6514377171183587830}
   - {fileID: 2141033697282498207}
-  - {fileID: 3157702660384230892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7108650012171853050
@@ -13008,6 +12945,7 @@ SceneRoots:
   - {fileID: 440958470}
   - {fileID: 833126601}
   - {fileID: 180027700}
+  - {fileID: 3157702660384230892}
   - {fileID: 7092264600504466988}
   - {fileID: 2043383937}
   - {fileID: 4242361962281607121}
