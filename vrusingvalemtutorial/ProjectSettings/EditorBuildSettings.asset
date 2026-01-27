@@ -12,6 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/outside.unity
     guid: d2f3c6aa38f37c14087cf28b6f510f15
   m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ede077984fb0f2643b844d1cb6b4d810, type: 2}
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 7a1b77c3a267c084fb8467cb83d1e58e, type: 2}
