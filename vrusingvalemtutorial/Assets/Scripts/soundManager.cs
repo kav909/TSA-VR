@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class soundManager : MonoBehaviour
 {
@@ -36,5 +37,12 @@ public class soundManager : MonoBehaviour
     public void Sound5()
     {
         audioSource.PlayOneShot(soundClips[4]);
+        
+    }
+
+    public void Sound6()
+    {
+        audioSource.PlayOneShot(soundClips[5]);
+
     }
 }
