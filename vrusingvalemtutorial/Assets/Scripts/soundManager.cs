@@ -37,7 +37,8 @@ public class soundManager : MonoBehaviour
     public void Sound5()
     {
         audioSource.PlayOneShot(soundClips[4]);
-        
+        Invoke("Sound6", 12f);
+
     }
 
     public void Sound6()
